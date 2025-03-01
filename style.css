@@ -1,0 +1,33 @@
+/* style.css */
+body {
+  font-family: 'Helvetica', sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+table.dataTable {
+  margin: 0 auto;
+  width: 90% !important;
+}
+
+table.dataTable th, table.dataTable td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+/* Asegura que todas las imágenes mantengan su proporción original */
+img {
+  height: auto;
+  object-fit: contain;
+}

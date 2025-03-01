@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokexgames Dex – La Pokédex Interactiva</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Incluir DataTables y PapaParse desde CDNs -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Pokexgames Dex</h1>
+    <p>La pokédex interactiva minimalista de PokeXGames</p>
+  </header>
+  <main>
+    <!-- Aquí se mostrará la tabla -->
+    <table id="pokedex" class="display">
+      <thead>
+        <tr>
+          <th>Pokemon</th>
+          <th>Número</th>
+          <th>Nombre</th>
+          <th>Forma</th>
+          <th>Nivel</th>
+          <th>Movimientos</th>
+          <th>Habilidades</th>
+          <!-- Aquí podrías agregar columnas adicionales si las deseas -->
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>
