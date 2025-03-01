@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex Animalista</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- PapaParse para parsear el CSV -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <!-- Fuse.js para búsqueda difusa -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Pokedex Animalista</h1>
+    <div class="theme-toggle">
+      <label for="theme-switch">Modo Oscuro:</label>
+      <input type="checkbox" id="theme-switch">
+    </div>
+  </header>
+  <main>
+    <section class="controls">
+      <input type="text" id="search-input" placeholder="Buscar por nombre, número, etc.">
+      <input type="text" id="move-filter" placeholder="Filtrar por movimientos (separados por comas)">
+      <button id="reset-filters">Restablecer filtros</button>
+    </section>
+    <section class="filters">
+      <select id="generation-filter">
+        <option value="">Todas las generaciones</option>
+        <!-- Se rellenará dinámicamente -->
+      </select>
+    </section>
+    <section id="pokemon-container" class="pokemon-container">
+      <!-- Las tarjetas de Pokémon se mostrarán aquí -->
+    </section>
+  </main>
+
+  <!-- Modal de detalle estilo carta Pokémon -->
+  <div id="pokemon-modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-close" class="close">&times;</span>
+      <div id="modal-body">
+        <!-- Detalles del Pokémon se cargarán aquí -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
