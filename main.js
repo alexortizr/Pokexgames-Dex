@@ -2,11 +2,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Función para inicializar la tabla Tabulator
   function initTable(data) {
-    // Crear Tabulator en el div #pokedex con un alto fijo para scroll
     var table = new Tabulator("#pokedex", {
       data: data,
       layout: "fitColumns",
-      height: "500px",  // contenedor con scroll vertical
+      height: "500px",
       placeholder: "Cargando datos...",
       columns: [
         {title:"Pokemon", field:"Pokemon", formatter:"html", headerSort:false},
@@ -16,35 +15,32 @@ document.addEventListener("DOMContentLoaded", function () {
         {title:"Nivel", field:"Nivel", hozAlign:"center"},
         {title:"Movimientos", field:"movimientos", formatter:"html"},
         {title:"Habilidades", field:"habilidades", formatter:"html"},
-        // Puedes agregar columnas de efectividades si lo deseas.
+        // Puedes agregar columnas para efectividades si lo deseas.
       ],
-      // Al hacer clic en una fila, mostrar vista de detalle
+      // Al hacer clic en una fila se muestra la vista de detalle
       rowClick: function(e, row){
-        var rowData = row.getData();
-        showDetail(rowData);
+        showDetail(row.getData());
       },
     });
 
-    // Filtro de búsqueda
+    // Filtro personalizado: revisa todas las propiedades de cada fila
     var searchInput = document.getElementById("search-input");
     searchInput.addEventListener("keyup", function () {
-      var query = searchInput.value;
-      // Filtra en varios campos
-      table.setFilter([
-        {field:"nombre", type:"like", value:query},
-        {field:"numero", type:"like", value:query},
-        {field:"forma", type:"like", value:query},
-        {field:"Nivel", type:"like", value:query},
-        {field:"Pokemon", type:"like", value:query},
-        {field:"movimientos", type:"like", value:query},
-        {field:"habilidades", type:"like", value:query},
-      ]);
+      var query = searchInput.value.toLowerCase();
+      table.setFilter(function(data){
+        // Recorremos cada clave del objeto data
+        for (var key in data) {
+          if (data[key] && data[key].toString().toLowerCase().includes(query)) {
+            return true;
+          }
+        }
+        return false;
+      });
     });
   }
 
-  // Función para mostrar el detalle del Pokémon en vista pokédex
+  // Función para mostrar la vista de detalle (estilo pokédex)
   function showDetail(rowData) {
-    // Crear contenido de detalle (puedes personalizar el HTML)
     var detailContent = `
       <div class="pokedex-detail">
         <h2>${rowData.nombre}</h2>
@@ -59,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
     document.getElementById("detail-content").innerHTML = detailContent;
-    // Ocultar vista de tabla y mostrar detalle
     document.getElementById("table-view").style.display = "none";
     document.getElementById("detail-view").style.display = "block";
   }
@@ -71,14 +66,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   document.getElementById("back-button").addEventListener("click", backToTable);
 
-  // Cargar el CSV con PapaParse
+  // Cargar el CSV mediante PapaParse
   Papa.parse("pokemons_detailed.csv", {
     download: true,
     header: true,
     complete: function (results) {
-      var data = results.data;
-      // Inicializar la tabla con los datos
-      initTable(data);
+      initTable(results.data);
     },
   });
 });
