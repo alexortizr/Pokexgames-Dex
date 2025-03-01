@@ -1,8 +1,7 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const pokemonContainer = document.getElementById('pokemon-container');
   const searchInput = document.getElementById('search-input');
-  const moveFilterInput = document.getElementById('move-filter'); // Input para movimientos
+  const moveFilterInput = document.getElementById('move-filter');
   const resetButton = document.getElementById('reset-filters');
   const generationFilter = document.getElementById('generation-filter');
   const themeSwitch = document.getElementById('theme-switch');
@@ -12,15 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalBody = document.getElementById('modal-body');
 
   let pokemonData = [];
-  let fuse; // Fuse.js para búsqueda global
+  let fuse; // Para búsqueda difusa
 
-  // Función para eliminar etiquetas HTML
+  // Función para limpiar etiquetas HTML
   function cleanHTML(html) {
     if (typeof html !== "string") return "";
     return html.replace(/<[^>]*>/g, " ");
   }
 
-  // Genera cadena global (excluyendo movimientos)
+  // Genera cadena de búsqueda global (sin movimientos)
   function buildSearchString(pokemon) {
     let parts = [];
     for (let key in pokemon) {
@@ -38,30 +37,30 @@ document.addEventListener("DOMContentLoaded", () => {
     return parts.join(" ");
   }
 
-  // Función para mostrar detalles estilo carta Pokémon
+  // Muestra el detalle del Pokémon en un modal con estilo retro
   function showPokemonDetails(pokemon) {
-    let detailHTML = `
-      <div class="detail-header">
-        ${pokemon.Pokemon}
-        <h2>${pokemon.nombre} (${pokemon.numero ? "#" + pokemon.paddedNumero : pokemon.forma})</h2>
-        <p><strong>Generación/Forma:</strong> ${pokemon.forma}</p>
-      </div>
-      <div class="detail-body">
-        <p><strong>Nivel:</strong> ${pokemon.Nivel || "N/A"}</p>
-        <div class="detail-section">
-          <h3>Movimientos</h3>
-          ${pokemon.movimientos || "Sin movimientos"}
+    const detailHTML = `
+      <div class="pokemon-detail-card">
+        <div class="pokemon-image">
+          ${pokemon.Pokemon}
         </div>
-        <div class="detail-section">
-          <h3>Habilidades</h3>
-          ${pokemon.habilidades || "Sin habilidades"}
-        </div>
-        <div class="detail-section">
-          <h3>Efetividades</h3>
-          <p><strong>Efetivo:</strong> ${pokemon.Efetivo || "N/A"}</p>
-          <p><strong>Imune:</strong> ${pokemon.Imune || "N/A"}</p>
-          <p><strong>Inefetivo:</strong> ${pokemon.Inefetivo || "N/A"}</p>
-          <!-- Agrega más campos si lo deseas -->
+        <div class="pokemon-info">
+          <h2>${pokemon.nombre} <span>#${pokemon.paddedNumero || pokemon.forma}</span></h2>
+          <p><strong>Generación/Forma:</strong> ${pokemon.forma}</p>
+          <p><strong>Nivel:</strong> ${pokemon.Nivel || "N/A"}</p>
+          <div class="detail-section">
+            <h3>Movimientos</h3>
+            ${pokemon.movimientos || "Sin movimientos"}
+          </div>
+          <div class="detail-section">
+            <h3>Habilidades</h3>
+            ${pokemon.habilidades || "Sin habilidades"}
+          </div>
+          <div class="detail-section">
+            <h3>Efectividades</h3>
+            <p><strong>Efetivo:</strong> ${pokemon.Efetivo || "N/A"}</p>
+            <p><strong>Inefetivo:</strong> ${pokemon.Inefetivo || "N/A"}</p>
+          </div>
         </div>
       </div>
     `;
@@ -69,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.style.display = "block";
   }
 
-  // Cerrar modal
+  // Cerrar el modal
   modalClose.addEventListener("click", () => { modal.style.display = "none"; });
   window.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
 
@@ -92,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error(err));
 
-  // Rellena filtro de generaciones
+  // Rellena el filtro de generaciones
   function populateGenerationFilter(data) {
     const generations = [...new Set(data.map(p => p.forma).filter(g => g))];
     generations.forEach(gen => {
@@ -103,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Muestra tarjetas de Pokémon con evento click para detalles
+  // Muestra las tarjetas de Pokémon con el estilo retro
   function displayPokemons(data) {
     pokemonContainer.innerHTML = '';
     if (data.length === 0) {
