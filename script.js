@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const pokemonContainer = document.getElementById('pokemon-container');
   const searchInput = document.getElementById('search-input');
