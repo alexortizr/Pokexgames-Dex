@@ -2,24 +2,36 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Pokexgames Dex</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Tabulator CSS -->
-  <link href="https://unpkg.com/tabulator-tables@5.2.7/dist/css/tabulator.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex Animalista</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- PapaParse para parsear el CSV -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 </head>
 <body>
   <header>
-    <h1>Pokexgames Dex</h1>
-    <input type="text" id="search-input" placeholder="Buscar por número, nombre, forma, nivel, habilidades, movimientos, etc.">
+    <h1>Pokedex Animalista</h1>
+    <div class="theme-toggle">
+      <label for="theme-switch">Modo Oscuro:</label>
+      <input type="checkbox" id="theme-switch">
+    </div>
   </header>
   <main>
-    <div id="table-container"></div>
-    <div id="detail-view" class="hidden"></div>
+    <section class="controls">
+      <input type="text" id="search-input" placeholder="Buscar por nombre, número, etc.">
+      <button id="reset-filters">Restablecer filtros</button>
+    </section>
+    <section class="filters">
+      <select id="generation-filter">
+        <option value="">Todas las generaciones</option>
+        <!-- Se rellenará dinámicamente -->
+      </select>
+      <!-- Puedes agregar más filtros aquí si lo deseas -->
+    </section>
+    <section id="pokemon-container" class="pokemon-container">
+      <!-- Los Pokémon se mostrarán aquí -->
+    </section>
   </main>
-  <!-- PapaParse -->
-  <script src="https://unpkg.com/papaparse@5.3.2/papaparse.min.js"></script>
-  <!-- Tabulator JS -->
-  <script src="https://unpkg.com/tabulator-tables@5.2.7/dist/js/tabulator.min.js"></script>
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
