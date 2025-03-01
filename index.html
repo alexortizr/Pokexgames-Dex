@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Pokexgames Dex</title>
-  <!-- Tabulator CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@5.4.4/dist/css/tabulator_midnight.min.css">
-  <!-- Nuestro CSS -->
+  <!-- Tabulator CSS (usa la versión que prefieras, aquí usamos el tema "midnight") -->
+  <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator_midnight.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <header class="header">
     <h1>Pokexgames Dex</h1>
-    <input type="text" id="search-input" placeholder="Buscar por nombre, número, forma, nivel, habilidades, movimientos, etc.">
+    <input type="text" id="search-input" placeholder="Buscar por nombre, número, forma, elemento, habilidad, etc...">
   </header>
 
-  <!-- Vista de la tabla con scroll -->
-  <section id="table-view">
-    <div id="pokedex"></div>
-  </section>
+  <!-- Contenedor para la tabla -->
+  <div id="pokedex"></div>
 
-  <!-- Vista de detalle estilo pokédex (se muestra al hacer clic en una fila) -->
-  <section id="detail-view">
-    <button id="back-button">&larr; Volver</button>
+  <!-- Vista detalle: oculta por defecto, se mostrará cuando se haga clic en una fila -->
+  <div id="pokedex-detail" class="hidden">
+    <button id="back-btn">← Volver a la lista</button>
     <div id="detail-content"></div>
-  </section>
+  </div>
 
-  <!-- PapaParse -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" defer></script>
-  <!-- Tabulator JS -->
-  <script src="https://unpkg.com/tabulator-tables@5.4.4/dist/js/tabulator.min.js" defer></script>
-  <!-- Nuestro JS -->
-  <script src="main.js" defer></script>
+  <!-- PapaParse y Tabulator -->
+  <script src="https://unpkg.com/papaparse@5.3.2/papaparse.min.js"></script>
+  <script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
