@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <title>Pokexgames Dex</title>
-  <!-- Tabulator CSS (versión ligera) -->
+  <!-- Tabulator CSS (tema minimalista) -->
   <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@5.4.4/dist/css/tabulator_midnight.min.css">
-  <!-- Nuestro CSS personalizado -->
+  <!-- Nuestro CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>Pokexgames Dex</h1>
-    <input type="text" id="search-input" placeholder="Buscar Pokémon..." />
+    <input type="text" id="search-input" placeholder="Buscar por nombre, número, forma, etc.">
   </header>
   <main>
     <div id="pokedex"></div>
   </main>
 
-  <!-- PapaParse (cargado de forma asíncrona) -->
+  <!-- Modal para ver el detalle de un Pokémon -->
+  <div id="modal-overlay">
+    <div id="modal-content">
+      <span id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- PapaParse -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" defer></script>
   <!-- Tabulator JS -->
   <script src="https://unpkg.com/tabulator-tables@5.4.4/dist/js/tabulator.min.js" defer></script>
-  <!-- Nuestro script -->
+  <!-- Nuestro JS -->
   <script src="main.js" defer></script>
 </body>
 </html>
