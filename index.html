@@ -2,15 +2,26 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Pokedex - Pokexgames Dex</title>
+  <title>Pokexgames Dex</title>
+  <!-- Tabulator CSS -->
   <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@5.4.4/dist/css/tabulator.min.css">
+  <!-- Nuestro CSS personalizado -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="pokedex"></div>
+  <header>
+    <h1>Pokexgames Dex</h1>
+    <input type="text" id="search-input" placeholder="Buscar Pokémon..." />
+  </header>
+  <main>
+    <div id="pokedex"></div>
+  </main>
 
+  <!-- PapaParse -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <!-- Tabulator JS -->
   <script src="https://unpkg.com/tabulator-tables@5.4.4/dist/js/tabulator.min.js"></script>
+  <!-- Nuestro script -->
   <script src="main.js"></script>
 </body>
 </html>
