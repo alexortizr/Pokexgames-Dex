@@ -1,34 +1,51 @@
 /* style.css */
-
 body {
-  font-family: 'Helvetica', sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Arial', sans-serif;
+  background: #f5f5f5;
   margin: 0;
-  padding: 20px;
-  text-align: center;
+  padding: 0;
 }
 
 header {
-  margin-bottom: 20px;
+  background: #333;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-h1 {
-  color: #333;
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  letter-spacing: 2px;
 }
 
-/* Contenedor de la tabla */
-#pokedex {
-  margin: 0 auto;
-  width: 90%;
+#search-input {
+  margin-top: 10px;
+  padding: 8px;
+  width: 80%;
+  max-width: 400px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
 }
 
-/* Aseguramos que las imágenes mantengan su proporción */
-img {
-  height: auto;
-  object-fit: contain;
+main {
+  padding: 20px;
 }
 
-/* Estilos adicionales para Tabulator (puedes personalizarlos según tus gustos) */
+/* Estilos para Tabulator (tabla) */
 .tabulator {
-  font-size: 14px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Ajustes de las celdas para centrar contenido HTML */
+.tabulator .tabulator-cell {
+  text-align: center;
+  vertical-align: middle;
 }
