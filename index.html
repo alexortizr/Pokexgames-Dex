@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokedex Animalista Retro</title>
+  <title>Pokexgames - Dex</title>
   <!-- Fuente retro estilo pixel -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -14,30 +14,38 @@
 </head>
 <body>
   <header>
-    <h1>Pokedex Animalista Retro</h1>
+    <h1>Pokexgames - Dex</h1>
     <div class="theme-toggle">
       <label for="theme-switch">Modo Oscuro:</label>
       <input type="checkbox" id="theme-switch">
     </div>
   </header>
-  <main>
-    <section class="controls">
-      <input type="text" id="search-input" placeholder="Buscar por nombre, número, etc.">
-      <input type="text" id="move-filter" placeholder="Filtrar por movimientos (separados por comas)">
-      <button id="reset-filters">Restablecer filtros</button>
-    </section>
-    <section class="filters">
-      <select id="generation-filter">
-        <option value="">Todas las generaciones</option>
-        <!-- Opciones generadas dinámicamente -->
-      </select>
-    </section>
+  <!-- Contenedor general con dos columnas -->
+  <main class="content-container">
+    <!-- Panel izquierdo para filtros y buscador -->
+    <aside class="filters-panel">
+      <!-- Buscador general -->
+      <section class="controls">
+        <input type="text" id="search-input" placeholder="Buscar por nombre, número, etc.">
+        <button id="reset-filters">Restablecer filtros</button>
+      </section>
+      <!-- Filtros: ejemplo de categoría de generación -->
+      <section class="filters">
+        <h2>Categorías</h2>
+        <label for="generation-filter">Generación:</label>
+        <select id="generation-filter">
+          <option value="">Todas las generaciones</option>
+          <!-- Opciones generadas dinámicamente -->
+        </select>
+        <!-- Aquí se pueden agregar más filtros (checkboxes, etc.) -->
+      </section>
+    </aside>
+    <!-- Área derecha para mostrar tarjetas de Pokémon -->
     <section id="pokemon-container" class="pokemon-container">
-      <!-- Se insertan las tarjetas de Pokémon -->
+      <!-- Las tarjetas se insertarán aquí -->
     </section>
   </main>
-
-  <!-- Modal estilo retro para mostrar la "carta" Pokémon -->
+  <!-- Modal para mostrar detalles del Pokémon -->
   <div id="pokemon-modal" class="modal">
     <div class="modal-content">
       <span id="modal-close" class="close">&times;</span>
@@ -46,7 +54,6 @@
       </div>
     </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
