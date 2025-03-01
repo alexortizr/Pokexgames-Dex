@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pokemonContainer = document.getElementById('pokemon-container');
   const searchInput = document.getElementById('search-input');
-  const moveFilterInput = document.getElementById('move-filter');
   const resetButton = document.getElementById('reset-filters');
   const generationFilter = document.getElementById('generation-filter');
   const themeSwitch = document.getElementById('theme-switch');
@@ -12,6 +11,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let pokemonData = [];
   let fuse; // Para búsqueda difusa
+
+  // Mapeo de tipos a colores
+  const typeColors = {
+    "Acero": { bg: "LightGrey", border: "Silver" },
+    "Agua": { bg: "RoyalBlue", border: "MediumSlateBlue" },
+    "Bicho": { bg: "YellowGreen", border: "OliveDrab" },
+    "Dragón": { bg: "MediumSlateBlue", border: "SlateBlue" },
+    "Eléctrico": { bg: "Yellow", border: "Gold" },
+    "Fantasma": { bg: "Purple", border: "Indigo" },
+    "Fuego": { bg: "Crimson", border: "Firebrick" },
+    "Hada": { bg: "rgb(255, 136, 238)", border: "rgb(255, 187, 238)" },
+    "Hielo": { bg: "AquaMarine", border: "PaleTurquoise" },
+    "Lucha": { bg: "Firebrick", border: "Darkred" },
+    "Normal": { bg: "Lavender", border: "Gainsboro" },
+    "Planta": { bg: "Lime", border: "Limegreen" },
+    "Psíquico": { bg: "Violet", border: "Plum" },
+    "Roca": { bg: "Peru", border: "Chocolate" },
+    "Siniestro": { bg: "SlateGray", border: "Darkslategray" },
+    "Tierra": { bg: "BurlyWood", border: "Tan" },
+    "Veneno": { bg: "Mediumpurple", border: "Blueviolet" }
+  };
+
+  // Función para obtener estilo del borde según el tipo (o tipos)
+  function getBorderStyle(pokemon) {
+    if (!pokemon.tipo) return "";
+    const types = pokemon.tipo.split(',').map(t => t.trim());
+    if (types.length === 1) {
+      const color = typeColors[types[0]] ? typeColors[types[0]].border : "#000";
+      return `border: 4px solid ${color};`;
+    } else {
+      const color1 = typeColors[types[0]] ? typeColors[types[0]].border : "#000";
+      const color2 = typeColors[types[1]] ? typeColors[types[1]].border : "#000";
+      return `border: 4px solid;
+              border-image: linear-gradient(45deg, ${color1}, ${color2}) 1;`;
+    }
+  }
 
   // Función para limpiar etiquetas HTML
   function cleanHTML(html) {
@@ -37,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return parts.join(" ");
   }
 
-  // Muestra el detalle del Pokémon en un modal con estilo retro
+  // Mostrar detalles del Pokémon en un modal
   function showPokemonDetails(pokemon) {
     const detailHTML = `
       <div class="pokemon-detail-card">
@@ -68,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.style.display = "block";
   }
 
-  // Cerrar el modal
   modalClose.addEventListener("click", () => { modal.style.display = "none"; });
   window.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; });
 
@@ -91,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error(err));
 
-  // Rellena el filtro de generaciones
   function populateGenerationFilter(data) {
     const generations = [...new Set(data.map(p => p.forma).filter(g => g))];
     generations.forEach(gen => {
@@ -102,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Muestra las tarjetas de Pokémon con el estilo retro
   function displayPokemons(data) {
     pokemonContainer.innerHTML = '';
     if (data.length === 0) {
@@ -112,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(pokemon => {
       const card = document.createElement('div');
       card.classList.add('pokemon-card');
+      card.style.cssText += getBorderStyle(pokemon);
       card.innerHTML = `
         ${pokemon.Pokemon}
         <h3>${pokemon.nombre} (#${pokemon.paddedNumero || pokemon.forma})</h3>
@@ -122,7 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Filtrado global en tiempo real
   function filterPokemons() {
     const searchValue = searchInput.value.toLowerCase().trim();
     const generationValue = generationFilter.value.trim();
@@ -152,17 +184,14 @@ document.addEventListener("DOMContentLoaded", () => {
     displayPokemons(results);
   }
 
-  // Eventos para filtrado en tiempo real y reinicio
   searchInput.addEventListener('input', filterPokemons);
   generationFilter.addEventListener('change', filterPokemons);
   resetButton.addEventListener('click', () => {
     searchInput.value = '';
-    moveFilterInput.value = '';
     generationFilter.value = '';
     displayPokemons(pokemonData);
   });
 
-  // Modo oscuro
   themeSwitch.addEventListener('change', () => {
     document.body.classList.toggle('dark-mode', themeSwitch.checked);
   });
