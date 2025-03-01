@@ -20,16 +20,34 @@ h1 {
   font-size: 1.5rem;
 }
 
-/* Controles y filtros */
-.controls, .filters {
-  padding: 1rem;
-  text-align: center;
+/* Layout de dos columnas */
+.content-container {
+  display: flex;
+  flex-direction: row;
 }
 
+/* Panel izquierdo para filtros */
+.filters-panel {
+  width: 25%;
+  padding: 1rem;
+  background-color: #fff; /* Ajusta este color según la paleta de Pokexgames */
+  border-right: 2px solid #000;
+}
+
+/* Área derecha para tarjetas */
+.pokemon-container {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Controles y filtros */
 .controls input, .filters select {
   padding: 0.5rem;
-  margin: 0 0.5rem;
-  width: 250px;
+  margin: 0.5rem 0;
+  width: 90%;
   border: 2px solid #000;
   border-radius: 4px;
   background-color: #e0e0e0;
@@ -49,15 +67,6 @@ button {
 
 button:hover {
   background-color: #ffda47;
-}
-
-/* Contenedor de tarjetas */
-.pokemon-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
 }
 
 /* Tarjetas de Pokémon estilo retro */
@@ -99,11 +108,13 @@ button:hover {
   border: 4px solid #000;
   border-radius: 8px;
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
   margin: 5% auto;
   padding: 1rem;
   position: relative;
   text-align: center;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .close {
@@ -115,7 +126,7 @@ button:hover {
   color: #000;
 }
 
-/* Carta de detalle estilo retro */
+/* Detalle del Pokémon */
 .pokemon-detail-card {
   border: 4px solid #000;
   border-radius: 8px;
