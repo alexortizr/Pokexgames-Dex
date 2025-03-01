@@ -1,29 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Pokexgames Dex – La Pokédex Interactiva</title>
-  <!-- Archivo de estilos -->
+  <meta charset="UTF-8" />
+  <title>Pokedex - Pokexgames Dex</title>
+  <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@5.4.4/dist/css/tabulator.min.css">
   <link rel="stylesheet" href="style.css">
-  <!-- Tabulator CSS -->
-  <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Pokexgames Dex</h1>
-    <p>La pokédex interactiva minimalista de PokeXGames</p>
-  </header>
-  
-  <!-- Contenedor donde se mostrará la tabla -->
   <div id="pokedex"></div>
-  
-  <!-- Incluir jQuery (necesario para otras librerías si es requerido, aunque Tabulator no lo requiere) -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- Incluir Tabulator JS -->
-  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
-  <!-- Incluir PapaParse -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-  <!-- Archivo principal de JavaScript -->
+  <script src="https://unpkg.com/tabulator-tables@5.4.4/dist/js/tabulator.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
