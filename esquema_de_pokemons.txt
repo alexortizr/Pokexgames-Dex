@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/pokemons.schema.json",
+  "title": "Pokemons",
+  "type": "array",
+
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "numero": {
+        "type": "string"
+      },
+      "nombre": {
+        "type": "string"
+      },
+      "forma": {
+        "type": "string"
+      },
+      "en_pokexgames": {
+        "type": "string",
+        "description": "Puede ser 'SI' o 'NO' (u otro valor en la práctica)."
+      },
+      "elementos": {
+        "type": "string",
+        "description": "Cadena con elementos separados por coma, ej: 'Grass, Poison'."
+      },
+      "clase": {
+        "type": "string",
+        "description": "Cadena con clases separadas por coma, ej: 'Naturia, Malefic'."
+      },
+      "imagen_pokemon": {
+        "type": "string",
+        "format": "uri"
+      },
+      "imagen_clase": {
+        "type": "string",
+        "description": "Cadena con URLs separadas por coma.",
+        "format": "uri"
+      },
+      "pagina_pokemon": {
+        "type": "string",
+        "format": "uri"
+      },
+      "descripcion": {
+        "type": "string"
+      },
+      "level": {
+        "type": "integer"
+      },
+      "habilidades": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "boost": {
+        "type": "string"
+      },
+      "materia": {
+        "type": "string"
+      },
+      "pedra_evolucao": {
+        "type": "string"
+      },
+      "evolucoes": {
+        "type": "string"
+      },
+      "movimientos": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "slot": {
+              "type": "string"
+            },
+            "move": {
+              "type": "string"
+            },
+            "cooldown": {
+              "type": "string"
+            },
+            "imagenes_accion": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "alt": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                },
+                "required": ["src"]
+              }
+            },
+            "element": {
+              "type": "string"
+            },
+            "imagen_elemento": {
+              "type": "object",
+              "properties": {
+                "src": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "alt": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                }
+              },
+              "required": ["src"]
+            },
+            "level": {
+              "type": ["string", "null"],
+              "description": "Puede ser string numérico, o null si no aplica."
+            }
+          },
+          "required": ["slot", "move", "imagenes_accion"]
+        }
+      },
+      "efetividades": {
+        "type": "object",
+        "description": "Objeto cuyas claves son categorías (Efectivo, Normal, Inefectivo, etc.) y cada valor es un array de strings.",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "outras_versoes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "imagen": {
+              "type": "string",
+              "format": "uri"
+            },
+            "nombre": {
+              "type": "string"
+            }
+          },
+          "required": ["imagen", "nombre"]
+        }
+      },
+      "tier": {
+        "type": "string"
+      }
+    },
+    "required": ["id","numero","nombre","forma","en_pokexgames","elementos","clase","imagen_pokemon"]
+  }
+}
