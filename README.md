@@ -19,10 +19,4 @@ Este proyecto es una Pokédex web interactiva inspirada en Pokexgames, que permi
 - **IntersectionObserver:** Para implementar el lazy loading.
 - **GitHub Pages:** Para el despliegue y hosting de la aplicación.
 
-## Instalación y Uso
 
-1. **Clonar el repositorio:**
-
-   ```bash
-   git clone https://github.com/tu_usuario/tu_repositorio.git
-   cd tu_repositorio
