@@ -344,4 +344,3 @@ const filtersAside = document.getElementById("filters-aside");
 burgerButton.addEventListener("click", () => {
   filtersAside.classList.toggle("filters-open");
 });
-
