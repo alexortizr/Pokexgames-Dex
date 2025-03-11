@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BORDES SEGÚN LA FORMA */
+.borde-normal {
+  border: 3px solid #C0C0C0;
+}
+.borde-shiny {
+  border: 3px solid #FFD700;
+}
+.borde-mega {
+  border: 3px solid #DC143C;
+}
+.borde-alolan {
+  border: 3px solid #40E0D0;
+}
+.borde-galarian {
+  border: 3px solid #000080;
+}
+.borde-tm {
+  border: 3px dashed #800080;
+}
+.borde-otro {
+  border: 3px dashed #32CD32;
+}
+
+/* EFECTO HOVER PARA TARJETAS */
+.card-hover {
+  transition: transform 0.2s;
+}
+.card-hover:hover {
+  transform: scale(1.03);
+}
+
+/* BOTONES DE FILTRO */
+.filter-btn {
+  @apply px-3 py-1 rounded-md text-sm font-semibold cursor-pointer inline-flex items-center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.filter-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+}
+
+.btn-clear-filters {
+  @apply bg-red-500 text-white px-3 py-1 rounded-md text-sm font-semibold cursor-pointer;
+}
+
+/* Modo oscuro manual (.dark-mode) si lo usaras con class */
+.dark-mode {
+  background-color: #1F2937;
+  color: #D1D5DB;
+}
