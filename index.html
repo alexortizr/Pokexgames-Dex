@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokexgames - Dex</title>
+  <!-- Fuente Roboto -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/Pokexgames-Dex/assets/index-e57b6b6b.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <!-- Botón hamburguesa (solo en pantallas pequeñas) -->
+      <button class="burger-button" id="burger-button">&#9776;</button>
+      <h1>Pokexgames - Dex</h1>
+    </div>
+    <div class="theme-switch-container">
+      <label for="theme-switch">Modo Oscuro:</label>
+      <input type="checkbox" id="theme-switch">
+    </div>
+  </header>
+
+  <main>
+    <!-- Menú Lateral (sticky) -->
+    <aside class="filters" id="filters-aside">
+      <input type="text" id="pokemon-search" placeholder="Buscar Pokémon (nombre o número)">
+      <button id="reset-filters">Restablecer filtros</button>
+
+      <details class="filter-section" id="filter-forma">
+        <summary>Forma</summary>
+        <div class="toggles-grid" id="formas-container"></div>
+      </details>
+
+      <details class="filter-section" id="filter-elemento">
+        <summary>Elemento</summary>
+        <div class="toggles-grid" id="elementos-container"></div>
+      </details>
+
+      <details class="filter-section" id="filter-clase">
+        <summary>Clase</summary>
+        <div class="toggles-grid" id="clases-container"></div>
+      </details>
+
+      <details class="filter-section" id="filter-nivel">
+        <summary>Nivel</summary>
+        <div class="toggles-grid" id="niveles-container"></div>
+      </details>
+
+      <details class="filter-section" id="filter-tier">
+        <summary>Tier</summary>
+        <div class="toggles-grid" id="tier-container"></div>
+      </details>
+
+      <details class="filter-section" id="filter-habilidades">
+        <summary>Habilidades</summary>
+        <div class="toggles-grid" id="habilidades-container"></div>
+      </details>
+
+      <details class="filter-section" id="filter-movimientos">
+        <summary>Movimientos</summary>
+        <div id="movement-filters-content">
+          <label for="movimientos-filter">Buscar Movimiento:</label>
+          <input type="text" id="movimientos-filter" list="movimientos-list" placeholder="Buscar movimiento">
+          <datalist id="movimientos-list"></datalist>
+          <!-- Submenú para Tipos de Movimiento -->
+          <details class="movement-submenu" id="movement-tipos">
+            <summary>Tipos de Movimiento</summary>
+            <div class="toggles-grid" id="movimientos-tipos-container"></div>
+          </details>
+          <!-- Submenú para Elementos de Movimiento -->
+          <details class="movement-submenu" id="movement-elementos">
+            <summary>Elementos de Movimiento</summary>
+            <div class="toggles-grid" id="movimientos-elementos-container"></div>
+          </details>
+        </div>
+      </details>
+
+      <details class="filter-section" id="filter-efectividades">
+        <summary>Efectividades</summary>
+        <div id="efectividades-container"></div>
+      </details>
+    </aside>
+
+    <!-- Sección de Contenido -->
+    <section class="content-section">
+      <div id="filter-summary" class="filter-summary"></div>
+      <div id="pokemon-container"></div>
+      <!-- El sentinel se agregará (o moverá) dinámicamente en main.js -->
+    </section>
+  </main>
+
+  <!-- Overlay para la vista de detalle -->
+  <div id="detail-overlay" class="detail-overlay" style="display: none;">
+    <!-- Ventana de Detalle -->
+    <div id="pokedex-detail" class="pokedex-detail smartphone-shape">
+      <!-- Botón de cerrar dentro del recuadro -->
+      <span id="detail-close" class="detail-close">&times;</span>
+      <!-- Contenedor interno con scroll -->
+      <div class="pokedex-content" id="detail-content"></div>
+    </div>
+  </div>
+
+  <!-- Scripts (en este orden) -->
+  <script src="js/utils.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
